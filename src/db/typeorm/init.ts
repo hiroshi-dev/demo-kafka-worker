@@ -19,6 +19,7 @@ export function createTypeOrmOptions(
 
   const entities = `${root}/db/dao/*.dao.{ts,js}`;
   const migrations = `${root}/db/migration/*.{ts,js}`;
+  const ssl = config.host.includes('localhost') ? false : true;
 
   return {
     type: 'postgres',
@@ -30,5 +31,6 @@ export function createTypeOrmOptions(
     username: config.username,
     password: config.password,
     database: config.database,
+    ssl,
   };
 }
